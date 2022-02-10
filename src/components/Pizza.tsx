@@ -13,7 +13,7 @@ interface PizzaProps {
 
 function Pizza({ pizza }: PizzaProps): ReactElement {
   return (
-    <li>
+    <li className="pizzaList">
       <h2>{pizza.name}</h2>
       <p>{pizza.description}</p>
       <p>{pizza.price}</p>
