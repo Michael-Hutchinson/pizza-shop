@@ -17,14 +17,16 @@ class Cart extends React.Component<Props, State> {
   render() {
     const { isOpen } = this.state;
     return (
-      <div style={{display: isOpen ? 'block' : 'none'}}>
-        <button type="button" onClick={() => { 
-          this.setState((prevState) => ({isOpen: !prevState}))
+      <div className="cartContainer">
+        <button className="buttonStyle" type="button" onClick={() => { 
+          this.setState((prevState) => ({isOpen: !prevState.isOpen}))
         }}>Hello</button>
+      <div className="cartDropDown" style={{display: isOpen ? 'block' : 'none'}}>
         <ul>
           <li>Pizza1</li>
           <li>Pizza2</li>
         </ul>
+      </div>
       </div>
     )
   }
