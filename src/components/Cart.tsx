@@ -1,4 +1,5 @@
 import React from "react";
+import { AppStateContext } from './AppState'
 
 interface Props {}
 
@@ -24,14 +25,19 @@ class Cart extends React.Component<Props, State> {
   render() {
     const { isOpen } = this.state;
     return (
-      <div className="cartContainer">
+      <AppStateContext.Consumer>{(state) => (
+        <div className="cartContainer">
         <button className="buttonStyle" type="button" onClick={this.handleClick}>Hello</button>
-      <div className="cartDropDown" style={{display: isOpen ? 'block' : 'none'}}>
-        <span>
-          <p>Pizza</p>
-        </span>
+        <div className="cartDropDown" style={{display: isOpen ? 'block' : 'none'}}>
+          <span>
+            <p>{state.cart.items.length} pizzas in basket</p>
+          </span>
+          <ul>{state.cart.items.map(item => <li key={item.id}>{item.name}</li>)}</ul>
+        </div>
       </div>
-      </div>
+        )
+      }
+      </AppStateContext.Consumer>
     )
   }
 }
